@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gcp:
+      sql:
+        instance-connection-name: xxxx:xxxx:xxxx
+        database-name: xxxx
+  datasource:
+    username: xxxx
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+# it's not possible to add database schema to URL in native way
+database:
+  schema: xxx
