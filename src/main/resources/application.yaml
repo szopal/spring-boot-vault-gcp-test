@@ -14,22 +14,17 @@ spring:
       sql:
         credentials:
           encoded-key: ${GCP_CREDENTIALS_ENCODED_KEY}
-        instance-connection-name: xxxx:xxxx:xxx
-        database-name: xxxx
+        instance-connection-name: xxxx:xxx:xxx
+        database-name: xxx
     vault:
       host: localhost
       port: 8200
       scheme: https
       uri: https://localhost:8200
-      token: xxxxxxxxxxxxxxxxxx
+      token: xxxx
       enabled: true
       authentication: TOKEN
       fail-fast: true
-      kv:
-        enabled: true
-        backend: 'secrets'
-        profile-separator: '/'
-        application-name: ${spring.application.name}
       read-timeout: 30000
       connection-timeout: 30000
       ssl:
@@ -37,4 +32,4 @@ spring:
         trust-store-password: password
   config:
     import:
-      vault://
+      vault://secrets/${spring.application.name}
