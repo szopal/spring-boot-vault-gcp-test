@@ -17,7 +17,7 @@
 		<java.version>1.8</java.version>
 		<my.batis.version>2.2.0</my.batis.version>
 		<spring.version>2.6.1</spring.version>
-		<spring.cloud.vault.version>3.0.3</spring.cloud.vault.version>
+		<spring.cloud.vault.version>3.1.0</spring.cloud.vault.version>
 		<spring.cloud.dependencies.version>2021.0.0</spring.cloud.dependencies.version>
 		<spring.cloud.gcp.dependencies.version>2.0.6</spring.cloud.gcp.dependencies.version>
 	</properties>
@@ -50,15 +50,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-vault-config</artifactId>
 			<version>${spring.cloud.vault.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-vault-config-databases</artifactId>
-			<version>${spring.cloud.vault.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.cloud</groupId>
@@ -103,5 +94,17 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<repositories>
+		<!-- Spring Snapshot repository-->
+		<repository>
+			<id>spring-snapshots</id>
+			<name>repo.spring.io-snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>repo.spring.io-milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
 </project>

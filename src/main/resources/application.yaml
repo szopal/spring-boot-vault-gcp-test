@@ -1,13 +1,40 @@
 spring:
-  cloud:
-    gcp:
-      sql:
-        instance-connection-name: xxxx:xxxx:xxxx
-        database-name: xxxx
   datasource:
     username: xxxx
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-# it's not possible to add database schema to URL in native way
-database:
-  schema: xxx
+    hikari:
+      schema: xxx
+  application:
+    name: test-app
+  profile:
+    active: myprofile
+  cloud:
+    gcp:
+      sql:
+        credentials:
+          encoded-key: ${GCP_CREDENTIALS_ENCODED_KEY}
+        instance-connection-name: xxxx:xxxx:xxx
+        database-name: xxxx
+    vault:
+      host: localhost
+      port: 8200
+      scheme: https
+      uri: https://localhost:8200
+      token: xxxxxxxxxxxxxxxxxx
+      enabled: true
+      authentication: TOKEN
+      fail-fast: true
+      kv:
+        enabled: true
+        backend: 'secrets'
+        profile-separator: '/'
+        application-name: ${spring.application.name}
+      read-timeout: 30000
+      connection-timeout: 30000
+      ssl:
+        trust-store: file:///trustore.jks
+        trust-store-password: password
+  config:
+    import:
+      vault://
